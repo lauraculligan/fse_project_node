@@ -21,6 +21,7 @@ import AuthenticationController from "./controllers/AuthenticationController";
 import mongoose from "mongoose";
 import GroupController from "./controllers/GroupController";
 import dotenv from "dotenv";
+import MessageController from "./controllers/MessageController";
 
 dotenv.config();
 const cors = require("cors");
@@ -64,6 +65,7 @@ const userController = UserController.getInstance(app);
 const tuitController = TuitController.getInstance(app);
 const likesController = LikeController.getInstance(app);
 const dislikesController = DislikeController.getInstance(app);
+const messageController = MessageController.getInstance(app)
 SessionController(app);
 AuthenticationController(app);
 GroupController(app);
