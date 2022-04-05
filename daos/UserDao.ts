@@ -49,8 +49,9 @@ export default class UserDao implements UserDaoI {
      * @param {string} username User's username
      * @returns Promise To be notified when user is retrieved from the database
      */
-    findUserByUsername = async (username: string): Promise<any> =>
-        UserModel.findOne({username});
+    searchUserByName = async (username: string): Promise<any> =>
+        UserModel.find({username: username})
+            .exec();
 
     /**
      * Inserts user instance into the database
