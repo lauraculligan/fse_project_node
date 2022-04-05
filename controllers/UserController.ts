@@ -93,10 +93,9 @@ export default class UserController implements UserControllerI {
      * @param {Response} res Represents response to client, including the
      * body formatted as JSON containing the users that match the user name search
      */
-    // UNCOMMENT THIS
-    // searchUserByName = (req: Request, res: Response) =>
-    //     UserController.userDao.searchUserByName(req.params.uid)
-    //         .then((user: User) => res.json(user));
+    searchUserByName = (req: Request, res: Response) =>
+        UserController.userDao.searchUserByName(req.params.uid)
+            .then((user: User) => res.json(user));
 
     /**
      * Creates a new user instance
