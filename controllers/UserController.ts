@@ -39,6 +39,8 @@ export default class UserController implements UserControllerI {
                 UserController.userController.findAllUsers);
             app.get("/api/users/:uid",
                 UserController.userController.findUserById);
+            app.get("/api/users/username/:username",
+                UserController.userController.searchUserByName);
             app.post("/api/users",
                 UserController.userController.createUser);
             app.put("/api/users/:uid",
@@ -83,7 +85,19 @@ export default class UserController implements UserControllerI {
     findUserById = (req: Request, res: Response) =>
         UserController.userDao.findUserById(req.params.uid)
             .then((user: User) => res.json(user));
-    
+
+    /**
+     * Retrieves the user by their name
+     * @param {Request} req Represents request from client, including path
+     * parameter name identifying the name of the user to be retrieved
+     * @param {Response} res Represents response to client, including the
+     * body formatted as JSON containing the users that match the user name search
+     */
+    // UNCOMMENT THIS
+    // searchUserByName = (req: Request, res: Response) =>
+    //     UserController.userDao.searchUserByName(req.params.uid)
+    //         .then((user: User) => res.json(user));
+
     /**
      * Creates a new user instance
      * @param {Request} req Represents request from client, including body
