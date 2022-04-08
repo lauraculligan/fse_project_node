@@ -35,7 +35,7 @@ app.use(cors({
     credentials: true,
     origin: process.env.CORS_ORIGIN
 }));
-
+console.log(process.env.CORS_ORIGIN)
 let sess = {
     secret: process.env.EXPRESS_SESSION_SECRET,
     saveUninitialized: true,

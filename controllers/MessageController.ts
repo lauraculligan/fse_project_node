@@ -18,6 +18,7 @@ export default class MessageController {
             MessageController.messageController = new MessageController();
             app.get("/users/:uid/messages", MessageController.messageController.messagesISent);
             app.get("/users/messages/:uid", MessageController.messageController.messagesSentToMe);
+            app.get("/users/:uid1/messages/:uid2", MessageController.messageController.getMsgsBetweenUsers);
             app.post("/users/messages/", MessageController.messageController.messageUser);
             app.delete("/messages/:mid", MessageController.messageController.deleteMessage);
             app.get("/messages", MessageController.messageController.getAllMessages);
@@ -84,5 +85,7 @@ export default class MessageController {
         MessageController.messageDao.getAllMessages()
             .then(messages => res.json(messages));
 
-
+    getMsgsBetweenUsers= (req: Request, res: Response) =>
+        MessageController.messageDao.getMsgBetweenUsers(req.params.uid1,req.params.uid2)
+            .then(messages => res.json(messages));
 }

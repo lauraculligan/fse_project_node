@@ -74,4 +74,14 @@ export default class MessageDao{
         .find()
         .exec();
   }
+  getMsgBetweenUsers = async (uid1: string, uid2: string): Promise<any> => {
+    return MessageModel
+        .find({
+          $or: [
+            { fromUser: uid1, toUser: uid2 },
+            { fromUser: uid2, toUser: uid1 }
+          ]
+        })
+        .exec();
+  }
 }
