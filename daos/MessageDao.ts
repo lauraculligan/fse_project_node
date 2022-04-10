@@ -75,6 +75,10 @@ export default class MessageDao{
         .exec();
   }
   getMsgBetweenUsers = async (uid1: string, uid2: string): Promise<any> => {
+    if (uid1 === "undefined" || uid2 === "undefined") {
+      return []
+    }
+
     return MessageModel
         .find({
           $or: [
